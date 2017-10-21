@@ -16,5 +16,7 @@ print(reddit.read_only)
 
 subr = reddit.subreddit('learnpython')
 
-for submission in reddit.subreddit('learnpython').hot(limit=10):
-    print(submission.title)
+# print(subr.description)
+
+# for submission in reddit.subreddit('learnpython').hot(limit=10):
+#     print(submission.title)
