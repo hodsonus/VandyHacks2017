@@ -29,4 +29,4 @@ for subm in subr.hot(limit=1):
     #scan over each comment instance in the CommentForest
     for comm in subm.comments.list():
         print(comm.body, "\n")
-        comm.body.find("retard")
+        print(comm.body.find("retard"))
