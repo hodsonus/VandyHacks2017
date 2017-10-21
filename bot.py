@@ -34,25 +34,30 @@ for subm in subr.new(limit=None):
 
         callIndex = comm.body.find("!FootballStats")
 
+        #looks to see if comment has been replied to before
         found = False
         for line in lines:
             if line.startswith(comm.id):
                 found = True
                 break
 
+        #if the bot call is present in the comment and the comment has not been replied to
         if (callIndex >= 0) and not found:
             yearStart = -1
             playerStart = callIndex + 15
 
-            for i in range (len(comm.body)):
-                if comm.body[i].isdigit():
-                    yearStart = i
-                    break
+            try:
+                for i in range (len(comm.body)):
+                    if comm.body[i].isdigit():
+                        yearStart = i
+                        break
 
-            player = comm.body[playerStart:yearStart-1]
-            year = int(comm.body[yearStart:])
-            playerObj = nflgame.find(player, team=None)[0]
-            response = playerObj.name + ": " + str(year) + "\n\n" + playerObj.stats(year, week=None).formatted_stats()
-            comm.reply(response)
-            commented.write(comm.id)
-            commented.write("\n")
+                player = comm.body[playerStart:yearStart-1]
+                year = int(comm.body[yearStart:])
+                playerObj = nflgame.find(player, team=None)[0]
+                response = playerObj.name + ": " + str(year) + "\n\n" + playerObj.stats(year, week=None).formatted_stats()
+                comm.reply(response)
+                commented.write(comm.id)
+                commented.write("\n")
+            except:
+                pass
