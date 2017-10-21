@@ -11,9 +11,8 @@ r = praw.Reddit(client_id='rfYN_lq0etP5xg',
                      username='FootballStatsBot',
                      password='Vandyhacksf17')
 
+print(r.read_only)
 
-# r.login('FootballStatsBot', 'Vandyhacksf17')
+subr = r.subreddit('news')
 
-submissions = r.get_subreddit('news').get_top(limit=10)
-
-print("submissions")
+print(subr)
