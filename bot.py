@@ -43,12 +43,12 @@ for subm in subr.new(limit=None):
                     break
             player = comm.body[playerStart:yearStart-1]
             year = int(comm.body[yearStart:])
-            
+
 
             playerObj = nflgame.find(player, team=None)[0]
             print(playerObj, ":", year)
             print(playerObj.stats(year, week=None).formatted_stats())
-            print("\n")
+            print()
 
 
         else:
