@@ -42,7 +42,7 @@ for subm in subr.new(limit=None):
         #if the bot call is present in the comment and the comment has not been replied to
         if (callIndex >= 0) and not found:
             yearStart = -1
-            playerStart = callIndex + 15
+            playerStart = callIndex + 14
 
             #this try block assumes that the bot call is in propoer format.
             #the bot call should be formatted as '!FootballStats PLAYER NAME YEAR'
