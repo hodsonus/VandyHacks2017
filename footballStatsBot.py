@@ -1,3 +1,4 @@
+#!/Users/johnhodson/anaconda/bin/python
 import praw
 import nflgame
 import nflgame.player
