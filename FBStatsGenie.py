@@ -11,9 +11,9 @@ import nflgame.player
 #create reddit instance that has permission to write
 reddit = praw.Reddit(client_id='rfYN_lq0etP5xg',
                      client_secret='y8IvOQA3KZrwAr0Qhk9e7E3mSn4',
-                     user_agent='FootballStatsBot prototype (by /u/hodsonus and /u/xMutations)',
-                     username='FootballStatsBot',
-                     password='Vandyhacksf17')
+                     user_agent='FBStatsGenie prototype (by /u/hodsonus and /u/xMutations)',
+                     username='FBStatsGenie',
+                     password='vandyhacksfall2017')
 
 #subreddit that we will be operating in
 subr = reddit.subreddit('FBStatsTestingGrounds')
@@ -30,7 +30,7 @@ for subm in subr.new(limit=None):
     #scan over each comment instance in the CommentForest
     for comm in subm.comments.list():
 
-        callIndex = comm.body.find("!FootballStats")
+        callIndex = comm.body.find("!FBStatsGenie")
 
         #looks to see if comment has been replied to before
         found = False
