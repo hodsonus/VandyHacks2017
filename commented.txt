@@ -7,3 +7,4 @@ dopa8w1
 dopb5id
 dopc8cg
 dopcarl
+dopcoin
