@@ -1,7 +1,4 @@
 import praw
-import os
-import pdb
-import re
 import nflgame
 import nflgame.player
 
@@ -46,18 +43,34 @@ for subm in subr.new(limit=None):
             yearStart = -1
             playerStart = callIndex + 15
 
+            #this try block assumes that the bot call is in propoer format.
+            #the bot call should be formatted as '!FootballStats PLAYER NAME YEAR'
+            #and should be the last part of the reddit comment
             try:
-                for i in range (len(comm.body)):
-                    if comm.body[i].isdigit():
-                        yearStart = i
+                #searches for the first instance of an integer after the bot call
+                for i in range (len(comm.body)-playerStart):
+                    if comm.body[i+playerStart].isdigit():
+                        yearStart = i+playerStart
                         break
 
+                #the player name is the start of the name through the start of the year minus one.
+                #the year will be from the start of the year until the end of the string
                 player = comm.body[playerStart:yearStart-1]
                 year = int(comm.body[yearStart:])
+
+                #create player object list and pull the first instance from the list
                 playerObj = nflgame.find(player, team=None)[0]
+
+                #format the response string and reply to the comment
                 response = playerObj.name + ": " + str(year) + "\n\n" + playerObj.stats(year, week=None).formatted_stats()
                 comm.reply(response)
+
+                #append the comment ID to the commented.txt file to ensure that it is replied to
+                #only once
                 commented.write(comm.id)
                 commented.write("\n")
+
+            #if there was an exception thrown at any point through here, the bot call was not
+            #properly formatted
             except:
                 pass
