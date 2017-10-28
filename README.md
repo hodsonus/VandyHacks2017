@@ -1,4 +1,4 @@
-# VandyHacks2017
+# fbstatsgenie
 
 This Reddit bot was birthed at VandyHacks IV, where the idea was first conceived when we combined our love of Reddit with our passion for football.
 
